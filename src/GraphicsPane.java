@@ -40,11 +40,19 @@ public class GraphicsPane extends JPanel {
             }
         }
 
-        int startY = world.length / 2;
+        int startY = Maths.rand(world.length / 3) + (world.length / 3);
         int[] map = Maths.heightMap(startY, world[0].length);
 
         for (int x = 0; x < map.length; x++) {
             world[map[x]][x] = 1;
+        }
+
+        for (int h = 0; h < world.length; h++) {
+            for (int w = 0; w < world[0].length; w++) {
+                if (h > 0 && world[h - 1][w] >= 1) {
+                    world[h][w] = 2;
+                }
+            }
         }
     }
 
@@ -59,10 +67,10 @@ public class GraphicsPane extends JPanel {
 
         for (int i = 0; i < wHeight; i++) {
             for (int o = 0; o < wWidth; o++) {
-                if (world[i][o] == 1 || i != 0 && world[i - 1][o] == 1) {
-                     g2d.setPaint(new Color(0x949494));
-                } else {
-                    g2d.setPaint(new Color(0xFF5E5E5E, true));
+                switch (world[i][o]) {
+                    case 1 -> g2d.setPaint(new Color(0x157700));
+                    case 2 -> g2d.setPaint(new Color(0x5B442D));
+                    default -> g2d.setPaint(new Color(0x12D5E7));
                 }
 
                 g2d.fillRect(o * bWidth, i * bHeight, bWidth, bHeight);
