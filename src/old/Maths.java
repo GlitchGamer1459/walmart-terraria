@@ -1,3 +1,5 @@
+package old;
+
 public class Maths {
 
     public static int rand(int max) { // prints between 0 and maximum

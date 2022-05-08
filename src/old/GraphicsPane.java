@@ -1,7 +1,7 @@
+package old;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class GraphicsPane extends JPanel {
 
