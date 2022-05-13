@@ -1,4 +1,4 @@
-package largeWorld;
+package game;
 
 public class test {
 
